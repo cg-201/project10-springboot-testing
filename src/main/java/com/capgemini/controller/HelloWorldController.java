@@ -4,6 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,5 +30,12 @@ public class HelloWorldController {
 		e.setMobile("1122334455");
 		
 		return new ResponseEntity<Employee>(e, HttpStatus.OK);
+	}
+	
+	@PostMapping("/")
+	public ResponseEntity<Employee> createEmployee(@RequestBody Employee employee) {
+		
+		// logic to service/ repository
+		return new ResponseEntity<Employee>(employee, HttpStatus.CREATED);
 	}
 }
